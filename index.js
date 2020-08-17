@@ -56,7 +56,7 @@ app.post('/url', slowDown({
       slug,
       url,
     });
-    if (url.includes('cdg.sh')) {
+    if (url.includes('ortener.mooo.com')) {
       throw new Error('Stop it. 🛑');
     }
     if (!slug) {
@@ -95,7 +95,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-const port = process.env.PORT || 1337;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
