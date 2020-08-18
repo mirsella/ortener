@@ -1,3 +1,6 @@
+module.exports = {
+  mode: 'production'
+}
 const app = new Vue({
   el: '#app',
   data: {
