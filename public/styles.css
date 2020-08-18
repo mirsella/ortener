@@ -8,14 +8,8 @@
   src: url(procductsans.ttf);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html, body {
-  height: 60vh;
+  /* height: 60vh; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -24,6 +18,7 @@ html, body {
 
 body {
   font-family: productsans, sans-serif;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +45,7 @@ header {
 }
 
 .create {
-  width: 200px;
+  width: 100%;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.15rem;
@@ -58,6 +53,7 @@ header {
   border: none;
   background-color: var(--primary);
   padding: 0.75em 1.25rem;
+  margin-top: 20px;
 }
 
 .create:hover { 
@@ -74,8 +70,7 @@ header {
 }
 
 .form {
-  margin-bottom: 15px;
-  width: 200%;
+  width: 100%;
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -135,4 +130,8 @@ header {
 .form input:focus + .label-name::after, 
 .form input:valid + .label-name::after {
   transform: translateX(0%);
+}
+
+#app {
+width: 400px;
 }
