@@ -1,7 +1,11 @@
-/* :root { */
-/* --primary: #F7CCCC; */
-/* --second: #F12B6B; */
-/* } */
+/* TODO: */
+/* make emoji disappear when .input:focus */
+/* .create:focus button make bar enter from left bottom & top */
+
+:root {
+  --primary: #F7CCCC;
+  --second: #F12B6B;
+}
 
 @font-face {
   font-family: productsans;
@@ -9,7 +13,6 @@
 }
 
 html, body {
-  /* height: 60vh; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,15 +28,15 @@ body {
   align-items: center;
   background-color: var(--primary);
 }
-
 header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 40px;
 }
 
 .logo {
-  max-width: 70%;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .error {
@@ -133,5 +136,5 @@ header {
 }
 
 #app {
-width: 400px;
+  width: 400px;
 }

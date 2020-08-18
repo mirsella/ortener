@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ortener.mooo.com</title>
     <link rel="stylesheet" href="styles.css">
-    <style>:root { --primary: #F7CCCC; --second: #F12B6B; }</style>
   </head>
   <body>
-    <header href="index.html">
-      <img class="logo" src="logo.png">
+    <header>
+      <a href="index.html">
+        <img class="logo" src="logo.png">
+      </a>
     </header>
     <main id="app">
       <form v-if="formVisible" @submit.prevent="createUrl()">
