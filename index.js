@@ -31,9 +31,9 @@ app.get('/:id', async (req, res, next) => {
     if (url) {
       return res.redirect(url.url);
     }
-    return res.status(404);
+    return res.status(404).sendFile(notFoundPath);
   } catch (error) {
-    return res.status(404);
+    return res.status(404).sendFile(notFoundPath);
   }
 });
 
@@ -95,6 +95,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
