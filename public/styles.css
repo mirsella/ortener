@@ -50,6 +50,7 @@ header {
 }
 
 .create {
+  width: 200px;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.15rem;
