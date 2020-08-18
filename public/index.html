@@ -8,16 +8,22 @@
     <style>:root { --primary: #F7CCCC; --second: #F12B6B; }</style>
   </head>
   <body>
-    <header>
-      <img class="logo" src="logo.png" href="index.html">
+    <header href="index.html">
+      <img class="logo" src="logo.png">
     </header>
     <main id="app">
-      <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
+      <form v-if="formVisible" @submit.prevent="createUrl()">
         <div v-if="error" class="error">
           {{error}}
         </div>
-        <input class="input" type="text" v-model="slug" name="slug" id="slug" placeholder="alias for this url &#10549">
-        <input class="input" type="text" v-model="url" name="url" id="url" placeholder="URL">
+        <div class="form">
+          <input class="input" type="text" v-model="slug" name="slug" id="slug" required>
+          <label class="label-name" for="name"><span class="content-name">&#10145 Slug / Alias &#11013</span></label>
+        </div>
+        <div class="form">
+          <input class="input" type="text" v-model="url" name="url" id="url" required>
+          <label class="label-name" for="name"><span class="content-name">&#10145 URL &#11013</span></label>
+        </div>
         <button type="submit" class="create">create</button>
       </form>
       <div v-if="created">

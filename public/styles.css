@@ -1,6 +1,6 @@
 /* :root { */
-  /* --primary: #F7CCCC; */
-  /* --second: #F12B6B; */
+/* --primary: #F7CCCC; */
+/* --second: #F12B6B; */
 /* } */
 
 @font-face {
@@ -15,7 +15,11 @@
 }
 
 html, body {
-  height: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column; 
 }
 
 body {
@@ -40,42 +44,9 @@ header {
 .error {
   background: #A63446;
   padding: 0.5rem 1rem;
-  color: #ffffff;
+  color: var(--second);
   margin-bottom: 1rem;
   text-align: center;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.input,
-.create {
-  margin: 1rem 0;
-  max-width: 100%;
-}
-
-.input {
-  font-family: inherit;
-  padding-bottom: 1rem;
-  background: none;
-  border: none;
-  color: var(--second);
-  border-bottom: 2px solid var(--second);
-  text-align: center;
-  font-size: 1.25rem;
-  transition: border-bottom-color 0.3s ease-in-out;
-  caret-color: var(--primary);
-}
-
-.input:focus, .create:focus {
-  outline: none;
-}
-
-.input::placeholder {
-  color: var(--second);
-  opacity: 0.7;
 }
 
 .create {
@@ -99,4 +70,68 @@ header {
 
 .created a {
   color: inherit;
+}
+
+.form {
+  margin-bottom: 15px;
+  width: 200%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding-bottom: 10px;
+  zoom: 130%;
+}
+
+.form input {
+  width: 100%;
+  height: 100%;
+  color: var(--second);
+  background-color: var(--primary);
+  padding-top: 20px;
+  border: none;
+  outline: none;
+  -webkit-text-fill-color: var(--second);
+  -webkit-box-shadow: 0 0 0px 1000px var(--primary) inset;
+}
+
+.form label {
+  position: absolute;
+  text-align: center;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+}
+
+.form label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid var(--second);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.form input:focus + .label-name .content-name, 
+.form input:valid + .label-name .content-name{
+  transform: translateY(-130%);
+  color: var(--second);
+  font-size: 14px;
+}
+
+.form input:focus + .label-name::after, 
+.form input:valid + .label-name::after {
+  transform: translateX(0%);
 }

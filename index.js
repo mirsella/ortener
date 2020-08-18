@@ -31,9 +31,9 @@ app.get('/:id', async (req, res, next) => {
     if (url) {
       return res.redirect(url.url);
     }
-    return res.status(404).sendFile(notFoundPath);
+    return res.status(404);
   } catch (error) {
-    return res.status(404).sendFile(notFoundPath);
+    return res.status(404);
   }
 });
 
@@ -57,14 +57,14 @@ app.post('/url', slowDown({
       url,
     });
     if (url.includes('ortener.mooo.com')) {
-      throw new Error('Stop it. 🛑');
+      throw new Error('Stop it.');
     }
     if (!slug) {
       slug = nanoid(5);
     } else {
       const existing = await urls.findOne({ slug });
       if (existing) {
-        throw new Error('Slug in use. 🍔');
+        throw new Error('Slug in use.');
       }
     }
     slug = slug.toLowerCase();
@@ -91,11 +91,10 @@ app.use((error, req, res, next) => {
   }
   res.json({
     message: error.message,
-    stack: process.env.NODE_ENV === 'production' ? '🥞' : error.stack,
+    stack: process.env.NODE_ENV === 'production' ? 'not production' : error.stack,
   });
 });
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
