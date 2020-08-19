@@ -53,6 +53,7 @@ header {
   background-color: var(--primary);
   padding: 0.75em 1.25rem;
   margin-top: 20px;
+  outline: none;
 }
 
 .create:hover { 
