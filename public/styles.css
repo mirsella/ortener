@@ -25,7 +25,7 @@ body {
   background-color: var(--primary);
 }
 header {
-  margin-bottom: 40px;
+  overflow: hidden;
 }
 
 .logo {
@@ -48,30 +48,33 @@ header {
   cursor: pointer;
   font-family: inherit;
   font-size: 1.15rem;
-  color: var(--second);
+  color: black;
   border: none;
   background-color: var(--primary);
   padding: 0.75em 1.25rem;
-  margin-top: 20px;
   outline: none;
-  border-bottom: 1px solid black;
+  /* border-bottom: 2px solid black; */
 }
 
-.create:after {
-  content: "";
-  position: relative;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  border-bottom: 2px solid green;
+.button-container {
+  /* overflow: hidden; */
+  margin-top: 20px;
+}
+
+.button-border::after {
+  display: block;
+  content: '';
+  border-bottom: 3px solid var(--second);
   transform: translateX(-100%);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
-.create:hover + .create:after { 
-  /* border-bottom: 3px solid var(--second); */
+.create:focus + .button-border::after,
+.create:hover + .button-border::after {
+  /* display: absolute; */
   transform: translateX(0%);
+  transition: all 0.4s ease;
+  color: var(--second);
 }
 
 .created {
@@ -86,7 +89,7 @@ header {
   width: 100%;
   position: relative;
   height: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
   padding-bottom: 10px;
   zoom: 140%;
 }
@@ -123,14 +126,14 @@ header {
   height: 100%;
   border-bottom: 2px solid var(--second);
   transform: translateX(-101%);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .content-name {
   position: absolute;
   bottom: 5px;
   left: 0px;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .form input:focus + .label-name .content-name, 
