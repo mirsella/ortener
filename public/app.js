@@ -6,6 +6,8 @@ const app = new Vue({
     error: '',
     formVisible: true,
     created: null,
+    slugfocus: false,
+    urlfocus: false,
   },
   methods: {
     async createUrl() {
@@ -23,7 +25,7 @@ const app = new Vue({
       if (response.ok) {
         const result = await response.json();
         this.formVisible = false;
-        this.created = `https://ortener.vercel.app/${result.slug}`;
+        this.created = `https://ortener.herokuapp.com/${result.slug}`;
       } else if (response.status === 429) {
         this.error = 'You are sending too many requests. Try again in 30 seconds.';
       } else {

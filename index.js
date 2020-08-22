@@ -56,7 +56,7 @@ app.post('/url', slowDown({
       slug,
       url,
     });
-    if (url.includes('ortener.vercel.app')) {
+    if (url.includes('ortener.herokuapp.com')) {
       throw new Error('Stop it.');
     }
     if (!slug) {

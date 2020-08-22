@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ortener.vercel.app</title>
+    <title>ortener.herokuapp.com</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -18,13 +18,20 @@
           {{error}}
         </div>
         <div class="form">
-          <input class="input" type="text" v-model="slug" name="slug" id="slug" required>
-          <label class="label-name" for="name"><span class="content-name">&#10145 Slug / Alias &#11013</span></label>
+          <input class="input" type="text" v-model="slug" name="slug" id="slug" required @focus="slugfocus = true" @onvalid="slugfocus = true" @blur="slugfocus = false">
+          <label class="label-name" for="name">
+            <span class="content-name" v-if="slugfocus || document.querySelector('#slug').value != ''">Slug / Alias</span>
+            <span class="content-name" v-else="slugfocus">Slug / Alias ←</span>
+          </label>
         </div>
         <div class="form">
-          <input class="input" type="text" v-model="url" name="url" id="url" required>
-          <label class="label-name" for="name"><span class="content-name">&#10145 URL &#11013</span></label>
+          <input class="input" type="text" v-model="url" name="url" id="url" required  @focus="urlfocus = true" @blur="urlfocus = false">
+          <label class="label-name" for="name">
+            <span class="content-name" v-if="urlfocus || document.querySelector('#slug').value != ''">URL</span>
+            <span class="content-name" v-else="urlfocus">URL ←</span>
+          </label>
         </div>
+        <!-- <span class="button-border"><button type="submit" class="create">create</button></span> -->
         <button type="submit" class="create">create</button>
       </form>
       <div v-if="created">
