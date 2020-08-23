@@ -24,9 +24,6 @@ body {
   align-items: center;
   background-color: var(--primary);
 }
-header {
-  overflow: hidden;
-}
 
 .logo {
   width: 70%;
@@ -55,27 +52,66 @@ header {
   outline: none;
   /* border-bottom: 2px solid black; */
 }
-
-.button-container {
-  /* overflow: hidden; */
-  margin-top: 20px;
+.create:focus, .create:hover {
+  transition: all 0.7s ease 0.6s;
+  color: var(--second);
 }
 
-.button-border::after {
+.button-container {
+  overflow: hidden;
+  margin-top: 20px;
+  height: 55px;
+}
+
+.bbb { 
+  display: block;
+  transform: translateY(-25%); 
+}
+.bbb::after {
   display: block;
   content: '';
   border-bottom: 3px solid var(--second);
-  transform: translateX(-100%);
-  transition: all 0.4s ease;
+  transform: translateX(-101%);
+  transition: all 0.3s ease;
 }
+.create:focus ~ .bbb::after, .create:hover ~ .bbb::after { transform: translateX(0%); }
 
-.create:focus + .button-border::after,
-.create:hover + .button-border::after {
-  /* display: absolute; */
-  transform: translateX(0%);
-  transition: all 0.4s ease;
-  color: var(--second);
+.bbt {
+  transform: translateY(-1670%);
+  display: block;
 }
+.bbt::after {
+  display: block;
+  content: '';
+  border-top: 3px solid var(--second);
+  transform: translateX(101%);
+  transition: all 0.3s ease 0.2s;
+}
+.create:focus ~ .bbt::after, .create:hover ~ .bbt::after { transform: translateX(0%); }
+
+.bbr::after {
+  display: block;
+  content: '';
+  height: 55px;
+  border-right: 3px solid var(--second);
+  transition: all 0.1s ease 0.2s;
+  pointer-events: none;
+}
+.create:focus ~ .bbr::after, .create:hover ~ .bbr::after { transform: translateY(-100%); }
+
+.bbl { 
+  display: block;
+  transform: translateY(-302%); 
+}
+.bbl::after {
+  display: block;
+  content: '';
+  height: 55px;
+  border-left: 3px solid var(--second);
+  transition: all 0.2s ease 0.5s;
+  pointer-events: none;
+}
+.create:focus ~ .bbl::after, .create:hover ~ .bbl::after { transform: translateY(98%); }
 
 .created {
   color: var(--second);
