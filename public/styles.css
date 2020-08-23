@@ -50,10 +50,9 @@ body {
   background-color: var(--primary);
   padding: 0.75em 1.25rem;
   outline: none;
-  /* border-bottom: 2px solid black; */
 }
 .create:focus, .create:hover {
-  transition: all 0.7s ease 0.6s;
+  transition: all 0.8s ease 0.2s;
   color: var(--second);
 }
 
@@ -65,12 +64,12 @@ body {
 
 .bbb { 
   display: block;
-  transform: translateY(-25%); 
+  transform: translateY(-40%);
 }
 .bbb::after {
   display: block;
   content: '';
-  border-bottom: 3px solid var(--second);
+  border-bottom: 4px solid var(--second);
   transform: translateX(-101%);
   transition: all 0.3s ease;
 }
@@ -85,7 +84,7 @@ body {
   content: '';
   border-top: 3px solid var(--second);
   transform: translateX(101%);
-  transition: all 0.3s ease 0.2s;
+  transition: all 0.25s ease 0.2s;
 }
 .create:focus ~ .bbt::after, .create:hover ~ .bbt::after { transform: translateX(0%); }
 
@@ -101,14 +100,14 @@ body {
 
 .bbl { 
   display: block;
-  transform: translateY(-302%); 
+  transform: translateY(-304%); 
 }
 .bbl::after {
   display: block;
   content: '';
   height: 55px;
   border-left: 3px solid var(--second);
-  transition: all 0.2s ease 0.5s;
+  transition: all 0.1s ease 0.4s;
   pointer-events: none;
 }
 .create:focus ~ .bbl::after, .create:hover ~ .bbl::after { transform: translateY(98%); }
