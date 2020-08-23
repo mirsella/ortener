@@ -13,7 +13,7 @@
       </a>
     </header>
     <main id="app">
-      <form v-if="formVisible" @submit.prevent="createUrl()">
+      <form v-if="formVisible" @submit.prevent="createUrl()" name="form">
         <div v-if="error" class="error">
           {{error}}
         </div>
@@ -39,8 +39,9 @@
           <span class="bbl"></span>
         </div>
       </form>
-      <div v-if="created">
-        <p class="created">Your short url is: <a :href="created">{{created}}</a></p>
+      <div class="created" v-if="created">
+        <p>Your short url for {{url}} is:</p>
+        <a :href="created">{{created}}</a>
       </div>
     </main>
     <script src="https://vuejs.org/js/vue.min.js"></script>

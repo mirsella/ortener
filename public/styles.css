@@ -52,7 +52,7 @@ body {
   outline: none;
 }
 .create:focus, .create:hover {
-  transition: all 0.8s ease 0.2s;
+  transition: all 0.3s ease 0.1s;
   color: var(--second);
 }
 
@@ -84,7 +84,7 @@ body {
   content: '';
   border-top: 3px solid var(--second);
   transform: translateX(101%);
-  transition: all 0.25s ease 0.2s;
+  transition: all 0.2s ease 0.2s;
 }
 .create:focus ~ .bbt::after, .create:hover ~ .bbt::after { transform: translateX(0%); }
 
@@ -113,11 +113,13 @@ body {
 .create:focus ~ .bbl::after, .create:hover ~ .bbl::after { transform: translateY(98%); }
 
 .created {
+  text-align: center;
   color: var(--second);
 }
 
 .created a {
   color: inherit;
+  font-size: 110%;
 }
 
 .form {
@@ -186,5 +188,3 @@ body {
 #app {
   width: 400px;
 }
-
-
