@@ -84,7 +84,7 @@ body {
   content: '';
   border-top: 3px solid var(--second);
   transform: translateX(101%);
-  transition: all 0.2s ease 0.2s;
+  transition: all 0.3s ease 0.2s;
 }
 .create:focus ~ .bbt::after, .create:hover ~ .bbt::after { transform: translateX(0%); }
 
@@ -93,7 +93,7 @@ body {
   content: '';
   height: 55px;
   border-right: 3px solid var(--second);
-  transition: all 0.1s ease 0.2s;
+  transition: all 0.2s ease 0.4s;
   pointer-events: none;
 }
 .create:focus ~ .bbr::after, .create:hover ~ .bbr::after { transform: translateY(-100%); }
@@ -107,7 +107,7 @@ body {
   content: '';
   height: 55px;
   border-left: 3px solid var(--second);
-  transition: all 0.1s ease 0.4s;
+  transition: all 0.2s ease 0.5s;
   pointer-events: none;
 }
 .create:focus ~ .bbl::after, .create:hover ~ .bbl::after { transform: translateY(98%); }
@@ -163,14 +163,14 @@ body {
   height: 100%;
   border-bottom: 2px solid var(--second);
   transform: translateX(-101%);
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
 .content-name {
   position: absolute;
   bottom: 5px;
   left: 0px;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .form input:focus + .label-name .content-name, 
