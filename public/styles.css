@@ -1,7 +1,7 @@
 :root {
-  --primary: #F7CCCC;
-  --second: #f74f84;
-  --third: #d30e71;
+  --bg: #F7CCCC;
+  --light: #f74f84;
+  --dark: #d30e71;
 }
 
 @font-face {
@@ -9,10 +9,14 @@
   src: url(procductsans.ttf);
 }
 
+::selection {
+  background: var(--bg);
+}
+
 html, body {
-justify-content: space-around;
-align-items: center;
-flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
 
 header {
@@ -23,7 +27,7 @@ header {
 }
 
 .logo {
-  color: var(--second);
+  color: var(--light);
   margin: 0;
   display: inline-block;
   font-size: 100%;
@@ -35,7 +39,12 @@ header {
   float: left;
   margin-right: 30px;
 }
-.logo:hover { color: var(--third); }
+.chainhover {
+  display: none;
+}
+.logo:hover { color: var(--dark); }
+.logo:hover .chain { display: none; }
+.logo:hover .chainhover { display: inline; }
 
 .logo > h1 {
   margin: 0;
@@ -76,16 +85,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary);
+  background-color: var(--bg);
 }
 
 #app {
-width: 400px;
+  width: 400px;
 }
 .error {
   background: #A63446;
   padding: 0.5rem 1rem;
-  color: var(--third);
+  color: var(--dark);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -104,7 +113,7 @@ width: 400px;
 .bbb::after {
   display: block;
   content: '';
-  border-bottom: 3px solid var(--third);
+  border-bottom: 3px solid var(--dark);
   transform: translateX(-101%);
   transition: all 0.3s ease;
 }
@@ -117,7 +126,7 @@ width: 400px;
 .bbt::after {
   display: block;
   content: '';
-  border-top: 3px solid var(--third);
+  border-top: 3px solid var(--dark);
   transform: translateX(101%);
   transition: all 0.3s ease 0.2s;
 }
@@ -127,7 +136,7 @@ width: 400px;
   display: block;
   content: '';
   height: 55px;
-  border-right: 3px solid var(--third);
+  border-right: 3px solid var(--dark);
   transition: all 0.2s ease 0.4s;
   pointer-events: none;
 }
@@ -141,7 +150,7 @@ width: 400px;
   display: block;
   content: '';
   height: 55px;
-  border-left: 3px solid var(--third);
+  border-left: 3px solid var(--dark);
   transition: all 0.2s ease 0.5s;
   pointer-events: none;
 }
@@ -158,13 +167,13 @@ width: 400px;
 .form input {
   width: 100%;
   height: 100%;
-  color: var(--third);
-  background-color: var(--primary);
+  color: var(--dark);
+  background-color: var(--bg);
   padding-top: 20px;
   border: none;
   outline: none;
-  -webkit-text-fill-color: var(--third);
-  -webkit-box-shadow: 0 0 0px 1000px var(--primary) inset;
+  -webkit-text-fill-color: var(--dark);
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg) inset;
   font-size: 120%;
 }
 
@@ -176,7 +185,7 @@ width: 400px;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  border-bottom: 2px solid var(--second);
+  border-bottom: 2px solid var(--light);
 }
 
 .form label:after {
@@ -186,13 +195,13 @@ width: 400px;
   bottom: -2px;
   width: 100%;
   height: 100%;
-  border-bottom: 3px solid var(--third);
+  border-bottom: 3px solid var(--dark);
   transform: translateX(-101%);
   transition: transform 0.3s ease;
 }
 
 .content-name {
-  color: var(--second);
+  color: var(--light);
   position: absolute;
   bottom: 5px;
   left: 0px;
@@ -203,7 +212,7 @@ width: 400px;
 .form input:focus + .label-name .content-name, 
 .form input:valid + .label-name .content-name{
   transform: translateY(-130%);
-  color: var(--third);
+  color: var(--dark);
   font-size: 120%;
 }
 
@@ -217,21 +226,21 @@ width: 400px;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.15rem;
-  color: var(--second);
+  color: var(--light);
   border: none;
-  background-color: var(--primary);
+  background-color: var(--bg);
   padding: 0.75em 1.25rem;
   outline: none;
 }
 .create:focus, .create:hover {
   transition: all 0.3s ease 0.1s;
-  color: var(--third);
+  color: var(--dark);
 }
 .create:focus ~ .bbl::after, .create:hover ~ .bbl::after { transform: translateY(98%); }
 
 .created {
   text-align: center;
-  color: var(--third);
+  color: var(--dark);
 }
 .created a {
   color: inherit;
