@@ -12,7 +12,7 @@
       <a class="logo" href="index.html">
         <img class="chain" src="img/chain.png" alt="chain logo">
         <img class="chainhover" src="img/chain-hover.png" alt="chain logo">
-        <h1 class="title">ortener</h1><h2 class="title">.mooo.com</h2>
+        <h1 class="title">ortener</h1><h2 class="title domain">.mooo.com</h2>
         <p class="slogan">URL shortener</p>
       </a>
       <a class="git" target="_blank" href="https://github.com/mirsella/ortener">
@@ -36,6 +36,14 @@
             <span class="content-name" v-else="urlfocus">URL ←</span>
           </label>
         </div>
+        <div class="form">
+          <input class="input" type="text" v-model="passwd" name="passwd" id="passwd" required  @focus="passwdfocus = true" @blur="passwdfocus = false">
+          <label class="label-name" for="name">
+            <span class="content-name" v-if="passwdfocus || document.querySelector('#slug').value != ''">Overwriting password</span>
+            <span class="content-name" v-else="passwdfocus">Overwriting password ←</span>
+          </label>
+        </div>
+
         <div class="button-container">
           <button type="submit" class="create">create</button>
           <span class="bbt"></span>

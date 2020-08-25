@@ -3,11 +3,13 @@ const app = new Vue({
   data: {
     url: '',
     slug: '',
+    passwd: '',
     error: '',
     formVisible: true,
     created: null,
     slugfocus: false,
     urlfocus: false,
+    passwdfocus: false,
   },
   methods: {
     async createUrl() {
@@ -20,6 +22,7 @@ const app = new Vue({
         body: JSON.stringify({
           url: this.url,
           slug: this.slug || undefined,
+          passwd: this.passwd || undefined,
         }),
       });
       if (response.ok) {
