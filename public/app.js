@@ -27,7 +27,7 @@ const app = new Vue({
         // this.formVisible = false;
         this.created = `https://ortener.herokuapp.com/${result.slug}`;
       } else if (response.status === 429) {
-        this.error = 'You are sending too many requests. Try again in 30 seconds.';
+        this.error = 'You are sending too many requests. Try again in 20 seconds.';
       } else {
         const result = await response.json();
         this.error = result.message;

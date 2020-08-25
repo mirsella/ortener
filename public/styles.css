@@ -92,9 +92,8 @@ body {
   width: 400px;
 }
 .error {
-  background: #A63446;
-  padding: 0.5rem 1rem;
   color: var(--dark);
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -120,7 +119,7 @@ body {
 .create:focus ~ .bbb::after, .create:hover ~ .bbb::after { transform: translateX(0%); }
 
 .bbt {
-  transform: translateY(-1650%);
+  transform: translateY(-1660%);
   display: block;
 }
 .bbt::after {
