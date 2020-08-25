@@ -9,6 +9,9 @@
   </head>
   <body>
     <header>
+      <link v-if="colormode" rel="stylesheet" href="black.css">
+      <button v-if="colormode" class="lightoggle" @click="colormode = !colormode">Go Pink</button>
+      <button v-else class="lightoggle" @click="colormode = !colormode">Go Black</button>
       <a class="logo" href="index.html">
         <img class="chain" src="img/chain.png" alt="chain logo">
         <img class="chainhover" src="img/chain-hover.png" alt="chain logo">
@@ -23,24 +26,17 @@
     <main id="app">
       <form v-if="formVisible" @submit.prevent="createUrl()" name="form">
         <div class="form">
-          <input class="input" type="text" v-model="slug" name="slug" id="slug" required @focus="slugfocus = true" @blur="slugfocus = false">
-          <label class="label-name" for="name">
-            <span class="content-name" v-if="slugfocus || document.querySelector('#slug').value != ''">Slug / Alias</span>
-            <span class="content-name" v-else="slugfocus">Slug / Alias ←</span>
-          </label>
-        </div>
-        <div class="form">
-          <input class="input" type="text" v-model="url" name="url" id="url" required  @focus="urlfocus = true" @blur="urlfocus = false">
+          <input class="input" type="text" v-model="url" name="url" id="url" @focus="urlfocus = true" @blur="urlfocus = false" required placeholder=" ">
           <label class="label-name" for="name">
             <span class="content-name" v-if="urlfocus || document.querySelector('#slug').value != ''">URL</span>
             <span class="content-name" v-else="urlfocus">URL ←</span>
           </label>
         </div>
         <div class="form">
-          <input class="input" type="text" v-model="passwd" name="passwd" id="passwd" required  @focus="passwdfocus = true" @blur="passwdfocus = false">
+          <input class="input" type="text" v-model="slug" name="slug" id="slug" @focus="slugfocus = true" @blur="slugfocus = false" placeholder=" ">
           <label class="label-name" for="name">
-            <span class="content-name" v-if="passwdfocus || document.querySelector('#slug').value != ''">Overwriting password</span>
-            <span class="content-name" v-else="passwdfocus">Overwriting password ←</span>
+            <span class="content-name" v-if="slugfocus || document.querySelector('#slug').value != ''">Slug / Alias</span>
+            <span class="content-name" v-else="slugfocus">Slug / Alias ←</span>
           </label>
         </div>
 

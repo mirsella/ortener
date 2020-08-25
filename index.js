@@ -40,7 +40,6 @@ app.get('/:id', async (req, res, next) => {
 const schema = yup.object().shape({
   slug: yup.string().trim().matches(/^[\w\-]+$/i),
   url: yup.string().trim().url().required(),
-  passwd: yup.string().trim().matches(/^[\w\-]+$/i),
 });
 
 app.post('/url', slowDown({
@@ -50,12 +49,11 @@ app.post('/url', slowDown({
 }), rateLimit({
   windowMs: 20 * 1000,
 }), async (req, res, next) => {
-  let { slug, url, passwd } = req.body;
+  let { slug, url } = req.body;
   try {
     await schema.validate({
       slug,
       url,
-      passwd,
     });
     if (url.includes('ortener.herokuapp.com')) {
       throw new Error('Stop it.');
@@ -72,7 +70,6 @@ app.post('/url', slowDown({
     const newUrl = {
       url,
       slug,
-      passwd,
     };
     const created = await urls.insert(newUrl);
     res.json(created);

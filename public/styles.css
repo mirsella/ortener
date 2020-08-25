@@ -27,6 +27,14 @@ header {
   /* overflow: hidden; */
 }
 
+.lightoggle {
+  background-color: var(--bg);
+  border: none;
+  color: var(--light);
+  float: left;
+  outline: none;
+}
+
 .logo {
   color: var(--light);
   margin: 0;
@@ -89,9 +97,9 @@ body {
   background-color: var(--bg);
 }
 
-#app {
+main {
   /* width: 400px; */
-  width: 50%;
+  width: 40%;
 }
 .error {
   color: var(--dark);
@@ -211,14 +219,16 @@ body {
 }
 
 .form input:focus + .label-name .content-name, 
-.form input:valid + .label-name .content-name{
+/* .form input:valid + .label-name .content-name{ */
+.form input:not(:placeholder-shown) + .label-name .content-name{
   transform: translateY(-130%);
   color: var(--dark);
   font-size: 120%;
 }
 
 .form input:focus + .label-name::after, 
-.form input:valid + .label-name::after {
+/* .form input:valid + .label-name::after { */
+.form input:not(:placeholder-shown) + .label-name::after {
   transform: translateX(0%);
 }
 
@@ -247,6 +257,7 @@ body {
   color: inherit;
   font-size: 110%;
 }
+
 
 @media only screen and (max-width: 545px) {
   .slogan {

@@ -1,3 +1,9 @@
+const header = new Vue ({
+  el: 'header',
+  data: {
+    colormode: false,
+  }
+})
 const app = new Vue({
   el: '#app',
   data: {
@@ -9,7 +15,7 @@ const app = new Vue({
     created: null,
     slugfocus: false,
     urlfocus: false,
-    passwdfocus: false,
+    colormode: false,
   },
   methods: {
     async createUrl() {
@@ -22,7 +28,6 @@ const app = new Vue({
         body: JSON.stringify({
           url: this.url,
           slug: this.slug || undefined,
-          passwd: this.passwd || undefined,
         }),
       });
       if (response.ok) {
