@@ -23,6 +23,10 @@ header {
 .logo > img {
   height: 120px;
 }
+.logo > * {
+  display: inline-block;
+  color: var(--second);
+}
 
 .git {
   float: right;
