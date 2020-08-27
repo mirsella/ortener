@@ -10,7 +10,7 @@ const app = new Vue({
     url: '',
     slug: '',
     passwd: '',
-    error: '',
+    error: 'testingg    nnnn !',
     formVisible: true,
     created: null,
     slugfocus: false,
