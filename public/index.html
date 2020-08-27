@@ -10,9 +10,8 @@
   </head>
   <body>
     <header>
-      <link v-if="colormode" rel="stylesheet" href="black.css">
-      <button v-if="colormode" class="lightoggle" @click="colormode = !colormode">Go Pink</button>
-      <button v-else class="lightoggle" @click="colormode = !colormode">Go Black</button>
+      <button v-if="colormode" class="lightoggle" @click="togglecolormode()">Go Pink</button>
+      <button v-else class="lightoggle" @click="togglecolormode()">Go Black</button>
       <a class="logo" href="index.html">
         <img class="chain" src="img/chain.png" alt="chain logo">
         <img class="chainhover" src="img/chain-hover.png" alt="chain logo">

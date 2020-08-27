@@ -2,7 +2,18 @@ const header = new Vue ({
   el: 'header',
   data: {
     colormode: false,
-  }
+  },
+  methods: {
+    togglecolormode: function() {
+      if(this.colormode) {
+        document.documentElement.style.cssText = "--bg: #F7CCCC;";
+      } else {
+        document.documentElement.style.cssText = "--bg: black;";
+      }
+      this.colormode = !this.colormode;
+    },
+  },
+
 })
 const app = new Vue({
   el: '#app',
@@ -10,12 +21,11 @@ const app = new Vue({
     url: '',
     slug: '',
     passwd: '',
-    error: 'testingg    nnnn !',
+    error: '',
     formVisible: true,
     created: null,
     slugfocus: false,
     urlfocus: false,
-    colormode: false,
   },
   methods: {
     async createUrl() {
