@@ -1,20 +1,3 @@
-const header = new Vue ({
-  el: 'header',
-  data: {
-    colormode: false,
-  },
-  methods: {
-    togglecolormode: function() {
-      if(this.colormode) {
-        document.documentElement.style.cssText = "--bg: #F7CCCC;";
-      } else {
-        document.documentElement.style.cssText = "--bg: black;";
-      }
-      this.colormode = !this.colormode;
-    },
-  },
-
-})
 const app = new Vue({
   el: '#app',
   data: {
@@ -53,3 +36,15 @@ const app = new Vue({
     },
   },
 });
+
+let colormode = false;
+function togglecolormode() {
+  if(colormode) {
+    document.documentElement.style.cssText = "--bg: #F7CCCC;";
+    document.getElementsByClassName('lightoggle')[0].textContent = "Go Black"
+  } else {
+    document.documentElement.style.cssText = "--bg: black;";
+    document.getElementsByClassName('lightoggle')[0].textContent = "Go Pink"
+  }
+  colormode = !colormode;
+}
