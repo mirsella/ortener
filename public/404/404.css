@@ -4,23 +4,38 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background: var(--bg);
+}
+:root {
+  --bg: #F7CCCC;
+  --light: #f74f84;
+  --dark: #d30e71;
+}
+
+@font-face {
+  font-family: productsans;
+  src: url(procductsans.ttf);
+}
+
+
 html,
 body {
   height: 100%;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'productsans', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #262626;
+  background-color: var(--bg);
 }
 
 .not-found {
   margin: 1rem 0;
-  color: #ffffff;
+  color: var(--light);
   font-size: 3rem;
   font-weight: normal;
 }
@@ -28,15 +43,15 @@ body {
 .go-home-link {
   display: flex;
   align-items: center;
-  color: #ffffff;
+  color: var(--light);
   font-size: 1.5rem;
 }
+.go-home-link:hover { color: var(--dark); }
 
 .arrow {
   margin-right: 1rem;
   transition: transform 0.2s ease-in-out;
 }
 
-.go-home-link:hover .arrow {
-  transform: translateX(10px);
-}
+.go-home-link:hover .arrow { transform: translateX(10px); }
+

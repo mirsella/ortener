@@ -22,7 +22,7 @@ app.use(morgan('common'));
 app.use(express.json());
 app.use(express.static('./public'));
 
-const notFoundPath = path.join(__dirname, 'public/404.html');
+const notFoundPath = path.join(__dirname, 'public/404/404.html');
 
 app.get('/:id', async (req, res, next) => {
   const { id: slug } = req.params;
