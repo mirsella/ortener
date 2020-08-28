@@ -20,9 +20,9 @@ app.enable('trust proxy');
 app.use(helmet());
 app.use(morgan('common'));
 app.use(express.json());
-app.use(express.static('./public'));
+app.use(express.static('./static'));
 
-const notFoundPath = path.join(__dirname, 'public/404/404.html');
+const notFoundPath = path.join(__dirname, 'static/404/404.html');
 
 app.get('/:id', async (req, res, next) => {
   const { id: slug } = req.params;
@@ -62,21 +62,27 @@ app.post('/url', slowDown({
     }
     if (!slug) {
       slug = nanoid(5);
-    } else {
-      const existing = await urls.findOne({ slug });
-      if (existing) {
-        // console.log('existing : '+existing.passwd)
-        throw new Error('Slug in use.');
+    } 
+    slug = slug.toLowerCase();
+    let message = undefined
+    const existing = await urls.findOne({ slug });
+    if (existing) {
+      if (passwd === existing.passwd || existing.passwd == undefined || passwd === process.ENV.passwd) {
+        message = 'Old slug found, overwriting';
+        urls.remove({slug: slug})
+      } else {
+        throw new Error('Slug in use, Wrong password.');
       }
     }
-    slug = slug.toLowerCase();
     const newUrl = {
       url,
       slug,
       passwd,
     };
     const created = await urls.insert(newUrl);
+    created['message'] = message
     res.json(created);
+
   } catch (error) {
     next(error);
   }

@@ -23,7 +23,7 @@
       </a>
     </header>
     <main id="app">
-      <form v-if="formVisible" @submit.prevent="createUrl()" name="form">
+      <form @submit.prevent="createUrl()" name="form">
         <div class="form">
           <input class="input" type="text" v-model="url" name="url" id="url" @focus="urlfocus = true" @blur="urlfocus = false" required placeholder=" ">
           <label class="label-name" for="name">
@@ -41,8 +41,8 @@
         <div class="form">
           <input class="input" type="text" v-model="passwd" name="passwd" id="passwd" @focus="passwdfocus = true" @blur="passwdfocus = false" placeholder=" ">
           <label class="label-name" for="name">
-            <span class="content-name" v-if="passwdfocus || document.querySelector('#passwd').value != ''">password</span>
-            <span class="content-name" v-else="passwdfocus">password ←</span>
+            <span class="content-name" v-if="passwdfocus || document.querySelector('#passwd').value != ''">Password</span>
+            <span class="content-name" v-else="passwdfocus">Password ←</span>
           </label>
         </div>
 
@@ -54,12 +54,15 @@
           <span class="bbl"></span>
         </div>
 
-        <p class="passwd-text" v-if="passwdfocus">this optional "password" can be used to overwrite the slug with another passwd. Please don't use a real password.</p>
+        <p class="passwd-text" v-if="passwdfocus">this optional "password" can be used to overwrite the slug with another url. if no password is specified, anyone can overwrite your short url.</p>
+        <p class="passwd-text" v-if="passwdfocus">Please don't use a real password.</p>
+
       </form>
       <div v-if="error" class="error"> {{error}} </div>
       <div class="created" v-if="created">
-        <p>Your short url for {{url}} is:</p>
-        <a :href="created">{{created}}</a>
+        <p>{{message}}</p>
+        <p>Your short url for <a target="_blank" :href="oldurl">{{oldurl}}</a> is:</p>
+        <a target="_blank" :href="created">{{created}}</a>
       </div>
     </main>
     <script src="app.js"></script>
