@@ -2,6 +2,7 @@
   --bg: #F7CCCC;
   --light: #f74f84;
   --dark: #d30e71;
+  --orange: #e55102;
 }
 
 @font-face {
@@ -99,71 +100,9 @@ body {
 
 main {
   /* width: 400px; */
-  width: 40%;
-}
-.error {
-  color: var(--dark);
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  text-align: center;
-  font-size: 130%;
+  width: 60%;
 }
 
-
-.button-container {
-  overflow: hidden;
-  margin-top: 20px;
-  height: 55px;
-}
-
-.bbb { 
-  display: block;
-  transform: translateY(-40%);
-}
-.bbb::after {
-  display: block;
-  content: '';
-  border-bottom: 3px solid var(--dark);
-  transform: translateX(-101%);
-  transition: all 0.3s ease;
-}
-.create:focus ~ .bbb::after, .create:hover ~ .bbb::after { transform: translateX(0%); }
-
-.bbt {
-  transform: translateY(-1660%);
-  display: block;
-}
-.bbt::after {
-  display: block;
-  content: '';
-  border-top: 3px solid var(--dark);
-  transform: translateX(101%);
-  transition: all 0.3s ease 0.2s;
-}
-.create:focus ~ .bbt::after, .create:hover ~ .bbt::after { transform: translateX(0%); }
-
-.bbr::after {
-  display: block;
-  content: '';
-  height: 55px;
-  border-right: 3px solid var(--dark);
-  transition: all 0.2s ease 0.4s;
-  pointer-events: none;
-}
-.create:focus ~ .bbr::after, .create:hover ~ .bbr::after { transform: translateY(-100%); }
-
-.bbl { 
-  display: block;
-  transform: translateY(-304%); 
-}
-.bbl::after {
-  display: block;
-  content: '';
-  height: 55px;
-  border-left: 3px solid var(--dark);
-  transition: all 0.2s ease 0.5s;
-  pointer-events: none;
-}
 
 .form {
   width: 100%;
@@ -233,6 +172,11 @@ main {
   transform: translateX(0%);
 }
 
+.passwd-text { 
+  color: var(--light); 
+  text-align: center;
+}
+
 .create {
   width: 100%;
   cursor: pointer;
@@ -250,6 +194,60 @@ main {
 }
 .create:focus ~ .bbl::after, .create:hover ~ .bbl::after { transform: translateY(98%); }
 
+.button-container {
+  overflow: hidden;
+  margin-top: 20px;
+  height: 55px;
+}
+
+.bbb { 
+  display: block;
+  transform: translateY(-40%);
+}
+.bbb::after {
+  display: block;
+  content: '';
+  border-bottom: 3px solid var(--dark);
+  transform: translateX(-101%);
+  transition: all 0.3s ease;
+}
+.create:focus ~ .bbb::after, .create:hover ~ .bbb::after { transform: translateX(0%); }
+
+.bbt {
+  transform: translateY(-1660%);
+  display: block;
+}
+.bbt::after {
+  display: block;
+  content: '';
+  border-top: 3px solid var(--dark);
+  transform: translateX(101%);
+  transition: all 0.3s ease 0.2s;
+}
+.create:focus ~ .bbt::after, .create:hover ~ .bbt::after { transform: translateX(0%); }
+
+.bbr::after {
+  display: block;
+  content: '';
+  height: 55px;
+  border-right: 3px solid var(--dark);
+  transition: all 0.2s ease 0.4s;
+  pointer-events: none;
+}
+.create:focus ~ .bbr::after, .create:hover ~ .bbr::after { transform: translateY(-100%); }
+
+.bbl { 
+  display: block;
+  transform: translateY(-304%); 
+}
+.bbl::after {
+  display: block;
+  content: '';
+  height: 55px;
+  border-left: 3px solid var(--dark);
+  transition: all 0.2s ease 0.5s;
+  pointer-events: none;
+}
 .created {
   text-align: center;
   color: var(--dark);
@@ -258,6 +256,14 @@ main {
   color: inherit;
   font-size: 110%;
 }
+.error {
+  color: var(--orange);
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 130%;
+}
+
 
 
 @media only screen and (max-width: 545px) {
@@ -266,6 +272,9 @@ main {
   }
   .title.domain {
     display: none;
+  }
+  .passwd-div {
+    margin-bottom: 60px;
   }
 }
 @media only screen and (max-width: 435px) {

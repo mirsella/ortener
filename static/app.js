@@ -2,16 +2,19 @@ const app = new Vue({
   el: '#app',
   data: {
     url: '',
+    oldurl: '',
     slug: '',
     error: '',
-    formVisible: true,
+    message: '',
     created: null,
     slugfocus: false,
     urlfocus: false,
+    passwdfocus: false,
   },
   methods: {
     async createUrl() {
       this.error = '';
+      this.message = '';
       const response = await fetch('/url', {
         method: 'POST',
         headers: {
@@ -20,12 +23,16 @@ const app = new Vue({
         body: JSON.stringify({
           url: this.url,
           slug: this.slug || undefined,
+          passwd: this.passwd || undefined,
         }),
       });
       if (response.ok) {
         const result = await response.json();
-        // this.formVisible = false;
         this.created = `https://ortener.herokuapp.com/${result.slug}`;
+        this.oldurl = this.url;
+        // let slug = result.slug;
+        // this.created = `https://ortener.herokuapp.com/${slug}`;
+        this.message = result.message
       } else if (response.status === 429) {
         this.error = 'You are sending too many requests. Try again in 20 seconds.';
       } else {
