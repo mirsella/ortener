@@ -4,6 +4,7 @@ const app = new Vue({
     url: '',
     oldurl: '',
     slug: '',
+    passwd: '',
     error: '',
     message: '',
     created: null,
@@ -30,8 +31,6 @@ const app = new Vue({
         const result = await response.json();
         this.created = `https://ortener.herokuapp.com/${result.slug}`;
         this.oldurl = this.url;
-        // let slug = result.slug;
-        // this.created = `https://ortener.herokuapp.com/${slug}`;
         this.message = result.message
       } else if (response.status === 429) {
         this.error = 'You are sending too many requests. Try again in 20 seconds.';

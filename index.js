@@ -7,6 +7,7 @@ const monk = require('monk');
 const rateLimit = require('express-rate-limit');
 const slowDown = require('express-slow-down');
 const { nanoid } = require('nanoid');
+const crypto = require('crypto');
 
 require('dotenv').config();
 
@@ -64,10 +65,13 @@ app.post('/url', slowDown({
       slug = nanoid(5);
     } 
     slug = slug.toLowerCase();
-    let message = undefined
+    let message = undefined;
+    if (passwd) {
+      passwd = crypto.createHash('sha256').update(passwd).digest('hex');
+    }
     const existing = await urls.findOne({ slug });
     if (existing) {
-      if (passwd === existing.passwd || existing.passwd == undefined || passwd === process.ENV.passwd) {
+      if (passwd === existing.passwd || existing.passwd == undefined || passwd === process.env.passwd) {
         message = 'Old slug found, overwriting';
         urls.remove({slug: slug})
       } else {
@@ -80,7 +84,7 @@ app.post('/url', slowDown({
       passwd,
     };
     const created = await urls.insert(newUrl);
-    created['message'] = message
+    created['message'] = message;
     res.json(created);
 
   } catch (error) {
