@@ -38,6 +38,13 @@
             <span class="content-name" v-else="slugfocus">Slug / Alias ←</span>
           </label>
         </div>
+        <div class="form">
+          <input class="input" type="text" v-model="passwd" name="passwd" id="passwd" @focus="passwdfocus = true" @blur="passwdfocus = false" placeholder=" ">
+          <label class="label-name" for="name">
+            <span class="content-name" v-if="passwdfocus || document.querySelector('#passwd').value != ''">password</span>
+            <span class="content-name" v-else="passwdfocus">password ←</span>
+          </label>
+        </div>
 
         <div class="button-container">
           <button type="submit" class="create">create</button>
@@ -46,6 +53,8 @@
           <span class="bbr"></span>
           <span class="bbl"></span>
         </div>
+
+        <p class="passwd-text" v-if="passwdfocus">this optional "password" can be used to overwrite the slug with another passwd. Please don't use a real password.</p>
       </form>
       <div v-if="error" class="error"> {{error}} </div>
       <div class="created" v-if="created">
