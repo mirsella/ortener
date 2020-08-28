@@ -3,7 +3,6 @@ const app = new Vue({
   data: {
     url: '',
     slug: '',
-    passwd: '',
     error: '',
     formVisible: true,
     created: null,
