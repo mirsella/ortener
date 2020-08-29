@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit');
 const slowDown = require('express-slow-down');
 const { nanoid } = require('nanoid');
 const crypto = require('crypto');
+const cors = require('cors')
 
 require('dotenv').config();
 
@@ -20,6 +21,7 @@ app.enable('trust proxy');
 
 app.use(helmet());
 app.use(morgan('common'));
+app.use(cors())
 app.use(express.json());
 app.use(express.static('./static'));
 
