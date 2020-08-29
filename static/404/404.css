@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: productsans;
-  src: url(procductsans.ttf);
+  src: url(../productsans.ttf);
 }
 
 
@@ -44,14 +44,23 @@ body {
   display: flex;
   align-items: center;
   color: var(--light);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 .go-home-link:hover { color: var(--dark); }
+.go-home-link:hover .arrow { transform: translateX(10px); }
 
 .arrow {
   margin-right: 1rem;
   transition: transform 0.2s ease-in-out;
 }
 
-.go-home-link:hover .arrow { transform: translateX(10px); }
 
+@media only screen and (max-width: 550px) {
+  body {
+    zoom: 80%;
+  }
+}
+@media only screen and (max-width: 430px) {
+  body {
+    zoom: 60%;
+  }
