@@ -214,7 +214,7 @@ main {
 .create:focus ~ .bbb::after, .create:hover ~ .bbb::after { transform: translateX(0%); }
 
 .bbt {
-  transform: translateY(-1660%);
+  transform: translateY(-1690%);
   display: block;
 }
 .bbt::after {

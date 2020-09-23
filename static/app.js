@@ -38,8 +38,8 @@ const app = new Vue({
         const result = await response.json();
         this.error = result.message;
       }
-    },
-  },
+    }
+  }
 });
 
 let colormode = false;
