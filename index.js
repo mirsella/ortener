@@ -9,13 +9,13 @@ const slowDown = require('express-slow-down');
 const { nanoid } = require('nanoid');
 const crypto = require('crypto');
 const cors = require('cors')
-const enforce = require('express-sslify')
 require('dotenv').config();
+const secure = require('ssl-express-www');
 
 const db = monk(process.env.MONGODB_URI);
 const urls = db.get('urls');
 urls.createIndex({ slug: 1 }, { unique: true });
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
+app.use(secure)
 const app = express();
 app.enable('trust proxy');
 
