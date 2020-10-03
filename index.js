@@ -15,8 +15,8 @@ const secure = require('ssl-express-www');
 const db = monk(process.env.MONGODB_URI);
 const urls = db.get('urls');
 urls.createIndex({ slug: 1 }, { unique: true });
-app.use(secure)
 const app = express();
+app.use(secure)
 app.enable('trust proxy');
 
 app.use(helmet());
