@@ -8,7 +8,7 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "CJ R. <cj@null.computer> (https://w3cj.sh)",
+  "author": "mirsella, credits to CJ R. <cj@null.computer> (https://w3cj.sh)",
   "license": "MIT",
   "dependencies": {
     "cli": "^1.0.1",
@@ -22,8 +22,10 @@
     "monk": "^7.3.0",
     "morgan": "^1.10.0",
     "nanoid": "^3.1.9",
-    "nodemon": "^2.0.4",
     "ssl-express-www": "^3.0.7",
     "yup": "^0.29.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
