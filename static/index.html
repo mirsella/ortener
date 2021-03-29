@@ -38,11 +38,12 @@
           </label>
         </div>
         <div class="form">
-          <input class="input" type="text" v-model="passwd" name="passwd" id="passwd" @focus="passwdfocus = true" @blur="passwdfocus = false" placeholder=" ">
+          <input class="input" type="password" v-model="passwd" name="passwd" id="passwd" @focus="passwdfocus = true" @blur="passwdfocus = false" placeholder=" ">
           <label class="label-name" for="name">
             <span class="content-name" v-if="passwdfocus || document.querySelector('#passwd').value != ''">Password</span>
             <span class="content-name" v-else="passwdfocus">Password ←</span>
           </label>
+          <button id="togglepass">👀</button>
         </div>
 
         <div class="button-container">

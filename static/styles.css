@@ -99,7 +99,6 @@ body {
 }
 
 main {
-  /* width: 400px; */
   width: 60%;
 }
 
@@ -175,6 +174,17 @@ main {
 .passwd-text { 
   color: var(--light); 
   text-align: center;
+}
+#togglepass {
+  /* margin-left: 98%; */
+  /* align-self: flex-end; */
+  float: right;
+  /* clear: left; */
+  cursor: pointer;
+  color: var(--light);
+  border: none;
+  background-color: var(--bg);
+  outline: none;
 }
 
 .create {
@@ -276,6 +286,9 @@ main {
   .passwd-div {
     margin-bottom: 60px;
   }
+  /* #togglepass { */
+    /* transform: translateY(20px); */
+  /* } */
 }
 @media only screen and (max-width: 435px) {
   header {
