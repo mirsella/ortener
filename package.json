@@ -23,7 +23,7 @@
     "morgan": "^1.10.0",
     "nanoid": "^3.1.9",
     "ssl-express-www": "^3.0.7",
-    "yup": "^0.29.3"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
