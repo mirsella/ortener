@@ -19,18 +19,18 @@ const app = express();
 app.use(secure)
 app.enable('trust proxy');
 
-app.use(helmet());
-app.use(morgan('common'));
-app.use(cors())
-app.use(express.json());
-app.use(express.static('./static'));
-
+// for vue.min.js
 // This disables the `contentSecurityPolicy` middleware but keeps the rest.
 app.use(
   helmet({
     contentSecurityPolicy: false,
   })
 );
+app.use(morgan('common'));
+app.use(cors())
+app.use(express.json());
+app.use(express.static('./static'));
+
 
 const notFoundPath = path.join(__dirname, 'static/404/404.html');
 
