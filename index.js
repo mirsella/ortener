@@ -25,6 +25,13 @@ app.use(cors())
 app.use(express.json());
 app.use(express.static('./static'));
 
+// This disables the `contentSecurityPolicy` middleware but keeps the rest.
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
 const notFoundPath = path.join(__dirname, 'static/404/404.html');
 
 app.get('/:id', async (req, res, next) => {
