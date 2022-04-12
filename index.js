@@ -56,7 +56,7 @@ app.get('/:id', slowDown({
         const passwdhtml = fs.readFileSync(passwdPath, 'utf8');
         return res.status(403).send(passwdhtml.toString())
       } else if (!url.passwd || (url.passwd === passwd)) {
-        console.log("redirecting")
+        console.log("redirecting to", url.url)
         return res.redirect(url.url);
       }
     }
