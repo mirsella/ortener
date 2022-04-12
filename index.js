@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.static('./static'));
 
 const notFoundPath = path.join(__dirname, 'static/404/404.html');
-const passPath = path.join(__dirname, 'static/pass.html')
+const passwdPath = path.join(__dirname, 'static/passwd.html')
 
 app.get('/:id', slowDown({
   windowMs: 10 * 1000,
@@ -42,23 +42,27 @@ app.get('/:id', slowDown({
 }), rateLimit({
   windowMs: 20 * 1000,
 }), async (req, res, next) => {
-  const { id: slug, passwd } = req.params;
+  const { id: slug } = req.params;
+  let { passwd } = req.query
   if (passwd) {
     passwd = crypto.createHash('sha256').update(passwd).digest('hex');
   }
-  console.log(slug, passwd)
   try {
     const url = await urls.findOne({ slug });
+    console.log(slug, url.passwd === passwd)
     if (url) {
-      if (url.passwd) {
-      const passhtml = fs.readFileSync(passPath, 'utf8');
-        return res.status(403).send(passhtml.toString())
-      } else {
+      if (url.passwd && !passwd) {
+        console.log("passwd required")
+        const passwdhtml = fs.readFileSync(passwdPath, 'utf8');
+        return res.status(403).send(passwdhtml.toString())
+      } else if (!url.passwd || (url.passwd === passwd)) {
+        console.log("redirecting")
         return res.redirect(url.url);
       }
     }
     return res.status(404).sendFile(notFoundPath);
   } catch (error) {
+    console.log(error)
     return res.status(404).sendFile(notFoundPath);
   }
 });
@@ -66,7 +70,7 @@ app.get('/:id', slowDown({
 const schema = yup.object().shape({
   slug: yup.string().trim().matches(/^[\w\-]+$/i),
   url: yup.string().trim().url().required(),
-  passwd: yup.string().trim(),
+  passwd: yup.string().trim().test(e => e.length <= 100),
 });
 
 app.post('/url', slowDown({

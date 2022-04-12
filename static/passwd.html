@@ -8,20 +8,20 @@
     <title>password required</title>
   </head>
   <body>
-    <div style="display: inline-block;">
+    <div>
       <h1 class="created" id="slug"></h1>
       <h1 class="created">short url required a password</h1>
     </div>
       <form name="form">
         <div class="form">
-          <input class="input" type="text" name="passwd" id="passwd" placeholder=" ">
+          <input class="input" type="password" name="passwd" id="passwd" placeholder=" " maxlength="100"></input>
           <label class="label-name" for="name">
             <span class="content-name">password</span>
           </label>
         </div>
 
         <div class="button-container">
-          <input type="submit" class="create">submit</input>
+          <input type="submit" class="create" value="submit"></input>
           <span class="bbt"></span>
           <span class="bbb"></span>
           <span class="bbr"></span>
@@ -34,11 +34,26 @@
   </body>
   <script charset="utf-8">
     const form = document.querySelector('form');
-    const pass = document.querySelector('#passwd');
+    const passwd = document.querySelector('#passwd');
     const error = document.querySelector('.error');
     const slug = document.querySelector('#slug');
     const slugregex = /[a-zA-Z0-9]*$/
     const url = window.location.href;
-    slug.innerHTML = url.match(slugregex)[0];
+    id = url.match(slugregex)[0]
+    slug.innerHTML = `"${id}"`
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      fetch(id + `?passwd=${passwd.value}`)
+    })
   </script>
+  <style type="text/css" media="screen">
+    .created {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    form {
+      width: 60%;
+    }
+  </style>
 </html>
