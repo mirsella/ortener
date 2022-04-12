@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -31,15 +32,30 @@ app.use(cors())
 app.use(express.json());
 app.use(express.static('./static'));
 
-
 const notFoundPath = path.join(__dirname, 'static/404/404.html');
+const passPath = path.join(__dirname, 'static/pass.html')
 
-app.get('/:id', async (req, res, next) => {
-  const { id: slug } = req.params;
+app.get('/:id', slowDown({
+  windowMs: 10 * 1000,
+  delayAfter: 1,
+  delayMs: 500,
+}), rateLimit({
+  windowMs: 20 * 1000,
+}), async (req, res, next) => {
+  const { id: slug, passwd } = req.params;
+  if (passwd) {
+    passwd = crypto.createHash('sha256').update(passwd).digest('hex');
+  }
+  console.log(slug, passwd)
   try {
     const url = await urls.findOne({ slug });
     if (url) {
-      return res.redirect(url.url);
+      if (url.passwd) {
+      const passhtml = fs.readFileSync(passPath, 'utf8');
+        res.status(403).send(passhtml.toString())
+      } else {
+        return res.redirect(url.url);
+      }
     }
     return res.status(404).sendFile(notFoundPath);
   } catch (error) {
