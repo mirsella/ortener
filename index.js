@@ -52,7 +52,7 @@ app.get('/:id', slowDown({
     if (url) {
       if (url.passwd) {
       const passhtml = fs.readFileSync(passPath, 'utf8');
-        res.status(403).send(passhtml.toString())
+        return res.status(403).send(passhtml.toString())
       } else {
         return res.redirect(url.url);
       }
