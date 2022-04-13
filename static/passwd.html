@@ -37,25 +37,20 @@
     const passwd = document.querySelector('#passwd');
     const error = document.querySelector('.error');
     const slug = document.querySelector('#slug');
-    const slugregex = /[a-zA-Z0-9]*$/
+    const slugregex = /\/([a-zA-Z0-9]*)($|\?passwd=)/gm
     const url = window.location.href;
-    id = url.match(slugregex)[0]
+    id = slugregex.exec(url)[1];
     slug.innerHTML = `"${id}"`
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
       const response = await fetch(id + `?passwd=${passwd.value}`)
-        .then(res => {
-            console.log("then", res.ok)
-            Promise.reject(res)
-        })
+        .then(res => Promise.reject(res))
         .catch(e => {
-          console.log("catch", e.status, Object.keys(e), e)
           if (e.status === 403 || e.status === 401) {
             error.innerHTML = "Incorrect password"
-          } else if (e.status == 302) {
-            console.log("redirect")
-            // window.location.href = slugurl + `?passwd=${passwd.value}`
+          } else if (e.toString() === "TypeError: NetworkError when attempting to fetch resource.") {
+            window.location.href = id + `?passwd=${passwd.value}`
           } else {
             error.innerHTML = e
           }

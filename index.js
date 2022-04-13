@@ -49,15 +49,14 @@ app.get('/:id', slowDown({
   }
   try {
     const url = await urls.findOne({ slug });
-    console.log(slug, url.passwd === passwd)
     if (url) {
       if (url.passwd && !passwd) {
-        console.log("passwd required")
         const passwdhtml = fs.readFileSync(passwdPath, 'utf8');
-        return res.status(403).send(passwdhtml.toString())
+        return res.status(401).send(passwdhtml.toString())
       } else if (!url.passwd || (url.passwd === passwd)) {
-        console.log("redirecting to", url.url)
         return res.redirect(url.url);
+      } else if (url?.passwd !== passwd) {
+        return res.sendStatus(403)
       }
     }
     return res.status(404).sendFile(notFoundPath);
