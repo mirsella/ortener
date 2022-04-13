@@ -1,5 +1,4 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs'); const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -69,7 +68,7 @@ app.get('/:id', slowDown({
 const schema = yup.object().shape({
   slug: yup.string().trim().matches(/^[\w\-]+$/i),
   url: yup.string().trim().url().required(),
-  passwd: yup.string().trim().test(e => e.length <= 100),
+  passwd: yup.string().trim(),
 });
 
 app.post('/url', slowDown({
