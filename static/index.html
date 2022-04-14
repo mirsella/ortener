@@ -53,8 +53,8 @@
           <span class="bbl"></span>
         </div>
 
-        <p class="passwd-text" v-if="passwdfocus">this optional "password" can be used to overwrite the slug with another url. if no password is specified, anyone can overwrite your short url.</p>
-        <p class="passwd-text" v-if="passwdfocus">Please don't use a real password.</p>
+        <p class="passwd-text" v-if="passwdfocus">if you enter a password, you'll need it to acces the short url, and nobody will be able to overwrite your short url</p>
+        <p class="passwd-text" v-if="passwdfocus">if you do not use a password, someone can overwrite your short url by using the same slug</p>
 
       </form>
       <div v-if="error" class="error"> {{error}} </div>
