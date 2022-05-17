@@ -46,10 +46,12 @@
       e.preventDefault()
       const response = await fetch(id + `?passwd=${passwd.value}`)
         .then(res => {
-          if (e.status === 403 || e.status === 401) {
+          console.log(res)
+          if (res.status === 403 || res.status === 401) {
             error.innerHTML = "Incorrect password"
-          } else if (e.status === 302) {
-            window.location.href = id + `?passwd=${passwd.value}`
+          } else if (res.status === 302 || res.ok) {
+            console.log("redirecting", res.url)
+            window.location.href = res.url
           }
         })
         .catch(e => error.innerHTML = e)
